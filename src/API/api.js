@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const API_URL = "http://127.0.0.1:8000/plants/";
-
 const PRODUCTION_API_URL = "http://127.0.0.1:8000/production/";
 
 export const getPowerPlants = async () => {
@@ -27,10 +26,23 @@ export const createPlant = async (plantData) => {
   }
 };
 
+export const createPlantAndNavigate = async (plantData, navigate) => {
+  try {
+    await createPlant(plantData);
+    navigate('/');
+  } catch (error) {
+    console.error('Error creating plant:', error);
+    if (error.response) {
+      console.error('Validation errors:', error.response.data);
+    }
+    throw error;
+  }
+};
+
 export const deletePowerPlant = async (plantId) => {
   try {
     const response = await axios.delete(`${API_URL}${plantId}`, {
-      params: { power_plant_id: plantId }
+      params: { power_plant_id: plantId },
     });
     return response.data;
   } catch (error) {
@@ -38,7 +50,6 @@ export const deletePowerPlant = async (plantId) => {
     throw error;
   }
 };
-
 
 export const updatePowerPlant = async (plantId, plantData) => {
   try {
@@ -50,8 +61,6 @@ export const updatePowerPlant = async (plantId, plantData) => {
   }
 };
 
-
-// Fetch weekly production data from plant ID
 export const getProductionData = async (powerPlantId) => {
   try {
     const response = await axios.get(`${PRODUCTION_API_URL}${powerPlantId}/weekly-productions`);
@@ -61,4 +70,3 @@ export const getProductionData = async (powerPlantId) => {
     throw error;
   }
 };
-
