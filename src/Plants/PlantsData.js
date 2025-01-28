@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getPowerPlants, deletePowerPlant, navigateToPlantDetails } from '../API/api';
-import { Card, Row, Col, Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const Plants = () => {
@@ -38,59 +38,120 @@ const Plants = () => {
     }
   };
 
+  const handleScrollToPlants = () => {
+    const element = document.getElementById('explore-hydropower-section');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="container">
-      <h1 className="text-center my-4">Plants</h1>
-      
-      <Form className="search-bar-container">
-        <Form.Control
-          type="text"
-          placeholder="Search plants..."
-          value={searchQuery}
-          onChange={handleSearchChange}
-          className="search-bar"
-        />
-      </Form>
+    <div className="dark-bg">
+      {/* Hydropower UI Section */}
+      <div className="container-fluid py-5">
+        <div className="container">
+          <div className="row align-items-center">
+            
+            <div className="col-md-6">
+              <h1 className="fw-bold mb-3 white-text">Hydropower Plants</h1>
+              <p className="mb-4 white-text lead">
+              A leading provider of electromechanical equipment and services for hydropower stations, supporting the growth of clean, renewable energy worldwide.
+              </p>
+              <button className="btn-home-dark-blue" onClick={handleScrollToPlants}>
+                See more
+              </button>
+            </div>
 
-      <Row className="g-4 justify-content-center">
-        {filteredPlants.map((plant) => (
-          <Col key={plant.id} sm={12} md={6} lg={4} className="d-flex justify-content-center">
-            <Card className="card-width-height card-hover shadow-lg rounded-3 overflow-hidden card-plant">
-              <Card.Body className="d-flex flex-column justify-content-center align-items-center text-center">
-                
-                <h2 className="card-title text-dark fw-bold mb-3 fs-4">
-                  {plant.name}
-                </h2>
+            
+            <div className="col-md-6 ">
+              <div className="image-home">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-                <Card.Text className="text-muted mb-3" style={{ fontSize: '1.1rem' }}>
-                  <strong>Status:</strong> {plant.status}
-                </Card.Text>
+      <div className="section-bg-color">
+        <div className="container">
+          <div className="row">
+            <div className="col text-center py-5">
+            <h1 className="display-4">Hydropower potential worldwide </h1>
+              <p className="lead red">Approximately 16% of the world's electrical energy comes from hydropower. It offers a wide spectrum of applications, including energy storage for grid stability and peak load coverage.</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-                <div className="d-flex justify-content-center">
-                  <button
-                    type="button"
-                    className="btn btn-primary rounded-pill px-4 py-2 me-2"
-                    onClick={() => navigateToPlantDetails(navigate, plant.id)}
-                  >
-                    See More
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleDelete(plant.id)}
-                    className="btn btn-danger rounded-pill px-4 py-2"
-                  >
-                    Delete
-                  </button>
+      {/* Search and Plants List */}
+      <div className="container mt-5">
+        {/* Search Bar */}
+        <Form className="d-flex justify-content-center mb-5 pb-3">
+          <div className="search-bar-container">
+            <Form.Control
+              type="text"
+              placeholder="Search plants..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+              className="search-bar"
+            />
+          </div>
+        </Form>
+
+        {/* Plants List */}
+        <div id="explore-hydropower-section" className="row g-4 justify-content-center">
+          {filteredPlants.map((plant) => (
+            <div className="col-12 col-md-6 col-lg-4" key={plant.id}>
+              <div className="card l-bg-blue-dark">
+                <div className="card-statistic-3 p-4">
+                  <div className="card-icon card-icon-large">
+                    <i className="fa-solid fa-arrow-up-from-ground-water"></i> {/* Your icon */}
+                  </div>
+                  <div className="mb-4">
+                    <h5 className="fw-bold">{plant.name}</h5>
+                  </div>
+                  <div className="row align-items-center mb-2 d-flex">
+                    <div className="col-8">
+                      <h6 className="d-flex align-items-center mb-0">Status: {plant.status} </h6>
+                    </div>
+
+                    <div className="col-4 d-flex justify-content-end">
+                      <span>{plant.water_flow_rate}% <i className="fa fa-arrow-up"></i></span>
+                    </div>
+
+                  </div>
+                  <div className="progress mt-1" data-height="8" style={{ height: '8px' }}>
+                    <div className="progress-bar l-bg-green" role="progressbar" style={{ width: `${(plant.water_flow_rate / 10) * 100}%` }}></div>
+                  </div>
+
+                  {/* Buttons Section */}
+                  <div className="d-flex justify-content-center gap-3 mt-4">
+                    <Button 
+                      variant="outline-primary" 
+                      className="custom-btn custom-btn-see-more custom-btn-lg px-4" 
+                      onClick={() => navigateToPlantDetails(navigate, plant.id)}
+                    >
+                      See More
+                    </Button>
+                    
+                    <Button 
+                      variant="outline-danger" 
+                      className="custom-btn custom-btn-delete custom-btn-lg px-4" 
+                      onClick={() => handleDelete(plant.id)}
+                    >
+                      Delete
+                    </Button>
+                  </div>
                 </div>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+              </div>
+            </div>
+          ))}
+        </div>
 
-      {filteredPlants.length === 0 && (
-        <p className="text-center mt-4">No plants found...</p>
-      )}
+        {/* No Plants Found Message */}
+        {filteredPlants.length === 0 && (
+          <p className="text-center mt-4">No plants found...</p>
+        )}
+      </div>
     </div>
   );
 };

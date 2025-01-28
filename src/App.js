@@ -6,6 +6,7 @@ import CreatePlant from './Plants/CreatePlant';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import './App.css';
 import Navigation from './Navigation/Navigation';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function App() {
   return (

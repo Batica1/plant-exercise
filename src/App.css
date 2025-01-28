@@ -1,35 +1,14 @@
-.App {
-  text-align: center;
+/* NAVIGATION */
+
+.dark-bg .nav-link {
+  color: #fff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
+.navbar-custom .nav-link:hover {
+  color: #495057;
 }
 
 /* CreatePlant Component Form */
-
 .create-plant-container {
   max-width: 600px;
   margin: 50px auto;
@@ -95,37 +74,159 @@
 
 /* Card Style */
 
-.card-width-height{
-  max-height: 100%;
-  max-width: 100%;
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  border: none;
+  position: relative;
+  margin-bottom: 30px;
+  box-shadow: 0 0.46875rem 2.1875rem rgba(90,97,105,0.1), 0 0.9375rem 1.40625rem rgba(90,97,105,0.1), 0 0.25rem 0.53125rem rgba(90,97,105,0.12), 0 0.125rem 0.1875rem rgba(90,97,105,0.1);
 }
 
-.card-plant {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+.l-bg-blue-dark {
+  background: linear-gradient(to right, #373b44, #4286f4) !important;
+  color: #fff;
 }
 
-.card-title {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  font-size: 1.25rem;
+.card .card-statistic-3 .card-icon {
   text-align: center;
-  width: 100%; 
+  line-height: 50px;
+  margin-left: 15px;
+  color: #000;
+  position: absolute;
+  right: -5px;
+  top: 20px;
+  opacity: 0.1;
+}
+
+.card .card-statistic-3 .card-icon-large .fas, .card .card-statistic-3 .card-icon-large .far, .card .card-statistic-3 .card-icon-large .fab, .card .card-statistic-3 .card-icon-large .fal {
+  font-size: 110px;
+}
+
+.card .card-icon-large i {
+  font-size: 110px;
 }
 
 /* Search bar */
 .search-bar-container {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto 20px auto;
 }
 
 .search-bar {
-  border-radius: 25px;
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 50px;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  width: 100vh;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+  transform: scale(1.02);
+}
+
+.search-bar::placeholder {
+  color: #888;
+  font-style: italic;
+}
+
+/*  Home section  */
+
+.image-home {
+  background-image: url('../public/img/hydropower2.png');
   width: 100%;
+  height: 55vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.dark-bg {
+  background-color: #04019F;
+  color: #fff;
+}
+
+.white-text{
+  color: #fff;
+}
+
+/* Button Home Edit */
+.btn-home-dark-blue {
+  background: linear-gradient(135deg, #0056b3, #007bff);
+  color: white;
+  font-size: 1.1rem;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+}
+
+.btn-home-dark-blue:hover {
+  background: linear-gradient(135deg, #0056b3, #0274ee);
+  box-shadow: 0 6px 18px rgba(0, 123, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+.btn-home-dark-blue:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+}
+
+.btn-home-dark-blue:active {
+  background: linear-gradient(135deg, #004085, #0077b3);
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.15);
+  transform: translateY(2px);
+}
+
+.section-bg-color{
+  background-color: #050089;
+}
+
+
+
+/* Custom Modern Button Styles (Smaller Version) */
+.custom-btn {
+  font-weight: 600;
+  border-radius: 30px;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  transition: all 0.3s ease-in-out;
+  border: 2px solid transparent;
+}
+
+/* 'See More' button style */
+.custom-btn-see-more {
+  background: linear-gradient(135deg, #0056b3, #007bff);
+  color: white;
+  border: 2px solid #17a2b8;
+}
+
+.custom-btn-see-more:hover {
+  background: linear-gradient(135deg,#004085, #0077b3); 
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 140, 158, 0.2);
+  transform: scale(1.02);
+}
+
+/* 'Delete' button style */
+.custom-btn-delete {
+  background: linear-gradient(135deg, #dc3545, #FF5A5F);
+  color: white;
+  border: 2px solid #dc3545;
+}
+
+.custom-btn-delete:hover {
+  background: linear-gradient(135deg, #FF5A5F, #dc3545);
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(220, 53, 69, 0.2);
+  transform: scale(1.02);
 }
