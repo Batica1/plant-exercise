@@ -104,7 +104,7 @@ const Plants = () => {
               <div className="card l-bg-blue-dark">
                 <div className="card-statistic-3 p-4">
                   <div className="card-icon card-icon-large">
-                    <i className="fa-solid fa-arrow-up-from-ground-water"></i> {/* Your icon */}
+                    <i className="fa-solid fa-arrow-up-from-ground-water"></i>
                   </div>
                   <div className="mb-4">
                     <h5 className="fw-bold">{plant.name}</h5>
